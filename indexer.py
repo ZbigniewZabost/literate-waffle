@@ -12,6 +12,7 @@ type = "word"
 
 es.indices.create(index=index, ignore=400)
 
+
 counter = 1
 actions = []
 with open("german.dic") as f:	    
