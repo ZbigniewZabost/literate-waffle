@@ -2,62 +2,65 @@
 # -*- coding: utf-8-*-
 
 import json
+import argparse
 from elasticsearch import Elasticsearch
-es = Elasticsearch([{"host":"XXX", "port":80}])
 
-letters = "hzrashawocop"
-size = 7
+parser = argparse.ArgumentParser(description='Index wrods to elasticsearch.')
 
+# es = Elasticsearch([{"host":"XXX", "port":80}])
 
-body = {
-	"from" : 0, "size" : 1000,
-	"fields" : ["word"],
-	"query" : {
-  		"filtered": {
-    		"query": {
-				"regexp":{
-					"word": "[" + letters + "]{" + str(size) + "}"
-				}
-    		},
-    		"filter": {
-    			"term" : {
-    				"length": size
-    			}
-    		}
-  		}
-	}
-}
+# letters = "hzrashawocop"
+# size = 7
 
-output = es.search("german", "word", body)
+# body = {
+# 	"from" : 0, "size" : 1000,
+# 	"fields" : ["word"],
+# 	"query" : {
+#   		"filtered": {
+#     		"query": {
+# 				"regexp":{
+# 					"word": "[" + letters + "]{" + str(size) + "}"
+# 				}
+#     		},
+#     		"filter": {
+#     			"term" : {
+#     				"length": size
+#     			}
+#     		}
+#   		}
+# 	}
+# }
 
-filter_dict = {}
+# output = es.search("german", "word", body)
 
-for c in letters:
-	if c in filter_dict:
-		filter_dict[c] = filter_dict[c] + 1
-	else:
-		filter_dict[c] = 1
+# filter_dict = {}
 
-print filter_dict
+# for c in letters:
+# 	if c in filter_dict:
+# 		filter_dict[c] = filter_dict[c] + 1
+# 	else:
+# 		filter_dict[c] = 1
 
-all_words = []
-correct_words = []
+# print filter_dict
 
-for element in output["hits"]["hits"]:
-    all_words.append(element["fields"]["word"][0])
+# all_words = []
+# correct_words = []
 
-print all_words
+# for element in output["hits"]["hits"]:
+#     all_words.append(element["fields"]["word"][0])
 
-for w in all_words:
-	matched = True
-	word = w.lower();
-	for key, value in filter_dict.iteritems():
-		if word.count(key) > value:
-			matched = False
-	if matched == True:
-		correct_words.append(w)
+# print all_words
 
-print len(correct_words)
+# for w in all_words:
+# 	matched = True
+# 	word = w.lower();
+# 	for key, value in filter_dict.iteritems():
+# 		if word.count(key) > value:
+# 			matched = False
+# 	if matched == True:
+# 		correct_words.append(w)
+
+# print len(correct_words)
 
 for w in correct_words:
 	print w
