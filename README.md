@@ -1,5 +1,10 @@
 # literate-waffle  [![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle)
+
+
 Index words to elasticsearch
+
+
+**Usage**
 
 ```
 python indexer/indexer.py -h
@@ -24,7 +29,7 @@ optional arguments:
 
 
 
-Example of indexed document:
+**Example of indexed document**
 ```
 {
   "_index": "germanv5",
@@ -56,6 +61,13 @@ Example of indexed document:
 ```
 
 
-Downloadable list of german words:
+
+**Downloadable list of german words**
 
 https://sourceforge.net/projects/germandict/
+
+
+
+**Known issues**
+
+- [ ] special letters (non-latin) incorrectly saved
