@@ -4,4 +4,5 @@ python:
 # command to install dependencies
 install: "pip install elasticsearch"
 # command to run tests
+script: pip install -e .
 script: py.test
