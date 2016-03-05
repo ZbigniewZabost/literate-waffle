@@ -1,8 +1,4 @@
-# literate-waffle  [![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle)
-
-
-Index words to elasticsearch
-
+# literate-waffle: elasticsearch word indexer  [![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle)
 
 **Usage**
 
