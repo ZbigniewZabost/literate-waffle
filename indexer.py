@@ -10,6 +10,7 @@ parser.add_argument('--es_host', nargs=1, default='localhost', help='Hostname of
 parser.add_argument('--index', nargs=1, default='german', help='Name of index, default = german')
 parser.add_argument('--type', nargs=1, default='word', help='Type of indexed documents, default = word')
 parser.add_argument('--dictionary', nargs=1, default='german.dic', help='Path to dictionary file, default = german.dic')
+parser.add_argument('--dict_encoding', nargs=1, default='latin-1', help='Dictionary file encoding, default = latin-1')
 parser.add_argument('--delete_index', nargs=1, default=True, type=bool, help='Drop index before indexing?, default = True')
 args = parser.parse_args()
 
@@ -25,7 +26,7 @@ counter = 1
 actions = []
 with open(args.dictionary) as f:	    
     for line in f:
-    	word = line.decode("latin-1").strip()
+    	word = line.decode(args.dict_encoding).strip()
 	dict = {}
 	for letter in word.lower():
 		if letter in dict:
