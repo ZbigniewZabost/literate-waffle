@@ -7,13 +7,13 @@ from elasticsearch import Elasticsearch, helpers
 
 def create_parser():
 	parser = argparse.ArgumentParser(description='Index words to elasticsearch.')
-	parser.add_argument('--es_host', nargs=1, default='localhost', help='Hostname of elasticsearch, default = localhost')
-	parser.add_argument('--es_port', nargs=1, default=9200, help='Hostname of elasticsearch, default = 9200')
-	parser.add_argument('--index', nargs=1, default='german', help='Name of index, default = german')
-	parser.add_argument('--type', nargs=1, default='word', help='Type of indexed documents, default = word')
-	parser.add_argument('--dictionary', nargs=1, default='german.dic', help='Path to dictionary file, default = german.dic')
-	parser.add_argument('--dict_encoding', nargs=1, default='latin-1', help='Dictionary file encoding, default = latin-1')
-	parser.add_argument('--delete_index', nargs=1, default=True, type=bool, help='Drop index before indexing?, default = True')
+	parser.add_argument('--es_host', default='localhost', help='Hostname of elasticsearch, default = localhost')
+	parser.add_argument('--es_port', type=int, default=9200, help='Hostname of elasticsearch, default = 9200')
+	parser.add_argument('--index', default='german', help='Name of index, default = german')
+	parser.add_argument('--type', default='word', help='Type of indexed documents, default = word')
+	parser.add_argument('--dictionary', default='../data/german.dic', help='Path to dictionary file, default = ../data/german.dic')
+	parser.add_argument('--dict_encoding', default='latin-1', help='Dictionary file encoding, default = latin-1')
+	parser.add_argument('--delete_index', action='store_true', default=False, help='Drop index before indexing?, default = False')
 	return parser
 
 def doStuff(args):

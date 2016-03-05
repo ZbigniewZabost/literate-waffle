@@ -2,11 +2,10 @@
 Index words to elasticsearch
 
 ```
-python indexer.py -h
+python indexer/indexer.py -h
 usage: indexer.py [-h] [--es_host ES_HOST] [--es_port ES_PORT] [--index INDEX]
                   [--type TYPE] [--dictionary DICTIONARY]
-                  [--dict_encoding DICT_ENCODING]
-                  [--delete_index DELETE_INDEX]
+                  [--dict_encoding DICT_ENCODING] [--delete_index]
 
 Index words to elasticsearch.
 
@@ -17,9 +16,8 @@ optional arguments:
   --index INDEX         Name of index, default = german
   --type TYPE           Type of indexed documents, default = word
   --dictionary DICTIONARY
-                        Path to dictionary file, default = german.dic
+                        Path to dictionary file, default = ../data/german.dic
   --dict_encoding DICT_ENCODING
                         Dictionary file encoding, default = latin-1
-  --delete_index DELETE_INDEX
-                        Drop index before indexing?, default = True
+  --delete_index        Drop index before indexing?, default = False
 ```
