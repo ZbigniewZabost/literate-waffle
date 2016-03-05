@@ -2,7 +2,7 @@ language: python
 python:
   - "2.7"
 # command to install dependencies
-install: "pip install elasticsearch"
+install:
+  - pip install -e .
 # command to run tests
-script: pip install -e .
 script: py.test
