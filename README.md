@@ -21,3 +21,41 @@ optional arguments:
                         Dictionary file encoding, default = latin-1
   --delete_index        Drop index before indexing?, default = False
 ```
+
+
+
+Example of indexed document:
+```
+{
+  "_index": "germanv5",
+  "_type": "word",
+  "_id": "4",
+  "_score": 1,
+  "_source": {
+    "letters": [
+      "s",
+      "p",
+      "i",
+      "e",
+      "l",
+      "e",
+      "n"
+    ],
+    "length": 7,
+    "word": "spielen",
+    "dict": {
+      "e": 2,
+      "i": 1,
+      "l": 1,
+      "n": 1,
+      "p": 1,
+      "s": 1
+    }
+  }
+}
+```
+
+
+Downloadable list of german words:
+
+https://sourceforge.net/projects/germandict/
