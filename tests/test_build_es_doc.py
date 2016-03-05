@@ -18,7 +18,8 @@ def test_word_with_duplicated_letters():
 	assert doc['dict'] == {'s' : 1, 'e' : 2}
 
 
-@pytest.mark.skip(reason='fix me: special letters not handled properly')
+# FIXME: special letters handled incorecctly
+@pytest.mark.xfail
 def test_word_with_special_letters():
 	doc = indexer.build_es_document('Maß')
 	assert doc['word'] == 'Maß'
