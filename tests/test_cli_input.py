@@ -8,7 +8,7 @@ def test_all_defaults():
     assert args.es_port == 9200
     assert args.index == 'german'
     assert args.type == 'word'
-    assert args.dictionary == '../data/german.dic'
+    assert args.dictionary == 'data/german.dic'
     assert args.dict_encoding =='latin-1'
     assert args.delete_index == False
 
@@ -30,6 +30,6 @@ def test_some_defaults():
     assert args.es_port == 9200
     assert args.index == 'german'
     assert args.type == 'word'
-    assert args.dictionary == '../data/german.dic'
+    assert args.dictionary == 'data/german.dic'
     assert args.dict_encoding =='utf-8'
     assert args.delete_index == True
