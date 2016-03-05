@@ -3,8 +3,9 @@ Index words to elasticsearch
 
 ```
 python indexer.py -h
-usage: indexer.py [-h] [--es_host ES_HOST] [--index INDEX] [--type TYPE]
-                  [--dictionary DICTIONARY] [--dict_encoding DICT_ENCODING]
+usage: indexer.py [-h] [--es_host ES_HOST] [--es_port ES_PORT] [--index INDEX]
+                  [--type TYPE] [--dictionary DICTIONARY]
+                  [--dict_encoding DICT_ENCODING]
                   [--delete_index DELETE_INDEX]
 
 Index words to elasticsearch.
@@ -12,6 +13,7 @@ Index words to elasticsearch.
 optional arguments:
   -h, --help            show this help message and exit
   --es_host ES_HOST     Hostname of elasticsearch, default = localhost
+  --es_port ES_PORT     Hostname of elasticsearch, default = 9200
   --index INDEX         Name of index, default = german
   --type TYPE           Type of indexed documents, default = word
   --dictionary DICTIONARY
