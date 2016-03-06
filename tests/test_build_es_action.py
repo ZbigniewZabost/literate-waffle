@@ -1,6 +1,7 @@
 import pytest
 from indexer import indexer
 
+
 def test_simple_action():
     doc = {
             'word' : 'Haus',

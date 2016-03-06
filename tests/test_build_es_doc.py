@@ -2,6 +2,7 @@
 import pytest
 from indexer import indexer
 
+
 def test_simple_word():
     doc = indexer.build_es_document('Haus', 'utf-8')
     assert doc['word'] == 'Haus'
@@ -12,6 +13,14 @@ def test_simple_word():
 
 def test_word_with_duplicated_letters():
     doc = indexer.build_es_document('See', 'utf-8')
+    assert doc['word'] == 'See'
+    assert doc['letters'] == ['s', 'e', 'e']
+    assert doc['length'] == 3
+    assert doc['dict'] == {'s' : 1, 'e' : 2}
+
+
+def test_word_with_whitespaces_around():
+    doc = indexer.build_es_document('  See  ', 'utf-8')
     assert doc['word'] == 'See'
     assert doc['letters'] == ['s', 'e', 'e']
     assert doc['length'] == 3

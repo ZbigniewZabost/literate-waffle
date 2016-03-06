@@ -56,29 +56,34 @@ def setup_es(host, port, index, delete_index):
 
 
 def print_progress(indexed_so_far, all_docs):
-    percent = indexed_so_far * 100 / (all_docs)
-    print 'Indexed documents: %d from %d, progress: %d%' % (indexed_so_far, all_docs, percent)
+    percent = indexed_so_far * 100 / all_docs
+    print 'Indexed documents: %d from %d, progress: %.f%%' % (indexed_so_far, all_docs, percent)
 
 
 def index(args, es):
     with open(args.dictionary) as dict_file:
+        print 'Counting number of lines...'
         num_lines = sum(1 for line in dict_file)
+        dict_file.seek(0)
         indexed_counter = 0
         es_actions = []
 
         for line in dict_file:
-            doc = build_es_document(line, args.encoding)
+            doc = build_es_document(line, args.dict_encoding)
             es_action = build_es_action(args.index, args.type, indexed_counter, doc)
             es_actions.append(es_action)
             indexed_counter = indexed_counter + 1
-            if len(es_actions) > 500:
+            if len(es_actions) >= 500:
+                print "Indexing batch..."
                 helpers.bulk(es, es_actions)
-                actions = []
+                es_actions = []
                 print_progress(indexed_counter, num_lines)
 
         # index remaining docs
-        helpers.bulk(es, actions)
+        print "Indexing batch..."
+        helpers.bulk(es, es_actions)
         print_progress(indexed_counter, num_lines)
+
 
 def main():
     parser = create_parser()
