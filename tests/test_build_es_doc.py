@@ -26,4 +26,3 @@ def test_word_with_special_letters():
 	assert doc['letters'][2] == 'ß'.decode('utf-8')
 	assert doc['length'] == 3
 	assert doc['dict'] == {'m' : 1, 'a' : 1, 'ß'.decode('utf-8'): 1}
-
