@@ -3,7 +3,7 @@ import pytest
 from indexer import indexer
 
 def test_simple_word():
-	doc = indexer.build_es_document('Haus')
+	doc = indexer.build_es_document('Haus', 'utf-8')
 	assert doc['word'] == 'Haus'
 	assert doc['letters'] == ['h', 'a', 'u', 's']
 	assert doc['length'] == 4
@@ -11,17 +11,19 @@ def test_simple_word():
 
 
 def test_word_with_duplicated_letters():
-	doc = indexer.build_es_document('See')
+	doc = indexer.build_es_document('See', 'utf-8')
 	assert doc['word'] == 'See'
 	assert doc['letters'] == ['s', 'e', 'e']
 	assert doc['length'] == 3
 	assert doc['dict'] == {'s' : 1, 'e' : 2}
 
 
-@pytest.mark.skip(reason='fix me: special letters not handled properly')
 def test_word_with_special_letters():
-	doc = indexer.build_es_document('Maß')
-	assert doc['word'] == 'Maß'
-	assert doc['letters'] == ['M', 'a', 'ß']
+	doc = indexer.build_es_document('Maß', 'utf-8')
+	assert doc['word'] == 'Maß'.decode('utf-8')
+	assert doc['letters'][0] == 'm'
+	assert doc['letters'][1] == 'a'
+	assert doc['letters'][2] == 'ß'.decode('utf-8')
 	assert doc['length'] == 3
-	assert doc['dict'] == {'m' : 1, 'a' : 1, 'ß': 1}
+	assert doc['dict'] == {'m' : 1, 'a' : 1, 'ß'.decode('utf-8'): 1}
+
