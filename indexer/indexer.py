@@ -11,9 +11,11 @@ def create_parser():
     parser.add_argument('--es_port', type=int, default=9200, help='Hostname of elasticsearch, default = 9200')
     parser.add_argument('--index', default='german', help='Name of index, default = german')
     parser.add_argument('--type', default='word', help='Type of indexed documents, default = word')
-    parser.add_argument('--dictionary', default='data/german.dic', help='Path to dictionary file, default = data/german.dic')
+    parser.add_argument('--dictionary', default='data/german.dic',
+                        help='Path to dictionary file, default = data/german.dic')
     parser.add_argument('--dict_encoding', default='latin-1', help='Dictionary file encoding, default = latin-1')
-    parser.add_argument('--delete_index', action='store_true', default=False, help='Drop index before indexing?, default = False')
+    parser.add_argument('--delete_index', action='store_true', default=False,
+                        help='Drop index before indexing?, default = False')
     return parser
 
 
@@ -30,27 +32,30 @@ def build_dict_from_word(word):
 def build_es_document(word, encoding):
     word = word.decode(encoding).strip()
     return {
-            'word' : word,
-            'letters' : list(word.lower()),
-            'length' : len(word),
-            'dict' : build_dict_from_word(word)
-        }
+        'word': word,
+        'letters': list(word.lower()),
+        'length': len(word),
+        'dict': build_dict_from_word(word)
+    }
 
 
 def build_es_action(index, doc_type, doc_id, doc):
     return {
-            '_index' : index,
-            '_type' : doc_type,
-            '_id' : doc_id,
-            '_source' : doc
-        }
+        '_index': index,
+        '_type': doc_type,
+        '_id': doc_id,
+        '_source': doc
+    }
 
 
-def setup_es(host, port, index, delete_index):
-    es = Elasticsearch([{'host':host, 'port':port}])
+def setup_es(host, port, es_index, delete_index):
+    print 'Setting up connection to elasticsearch on %s:%s' % (host, port)
+    es = Elasticsearch([{'host': host, 'port': port}])
     if delete_index:
-        es.indices.delete(index)
+        print 'Deleting index %s...' % es_index
+        es.indices.delete(es_index)
     # ignore 400 cause by IndexAlreadyExistsException when creating an index
+    print 'Creating index %s...' % es_index
     es.indices.create(index=index, ignore=400)
     return es
 
@@ -62,7 +67,7 @@ def print_progress(indexed_so_far, all_docs):
 
 def index(args, es):
     with open(args.dictionary) as dict_file:
-        print 'Counting number of lines...'
+        print 'Counting number of lines in %s ...' % dict_file.name
         num_lines = sum(1 for line in dict_file)
         dict_file.seek(0)
         indexed_counter = 0
