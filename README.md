@@ -17,7 +17,7 @@ optional arguments:
   --index INDEX         Name of index, default = german
   --type TYPE           Type of indexed documents, default = word
   --dictionary DICTIONARY
-                        Path to dictionary file, default = ../data/german.dic
+                        Path to dictionary file, default = data/german.dic
   --dict_encoding DICT_ENCODING
                         Dictionary file encoding, default = latin-1
   --delete_index        Drop index before indexing?, default = False
