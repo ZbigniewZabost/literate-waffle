@@ -62,3 +62,7 @@ optional arguments:
 
 https://sourceforge.net/projects/germandict/
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zbigniewz/literate-waffle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
