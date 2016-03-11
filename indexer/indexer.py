@@ -20,13 +20,13 @@ def create_parser():
 
 
 def build_dict_from_word(word):
-    dict = {}
+    letter_dict = {}
     for letter in word.lower():
-        if letter in dict:
-            dict[letter] = dict[letter] + 1
+        if letter in letter_dict:
+            letter_dict[letter] += 1
         else:
-            dict[letter] = 1
-    return dict
+            letter_dict[letter] = 1
+    return letter_dict
 
 
 def build_es_document(word, encoding):
@@ -39,9 +39,9 @@ def build_es_document(word, encoding):
     }
 
 
-def build_es_action(index, doc_type, doc_id, doc):
+def build_es_action(es_index, doc_type, doc_id, doc):
     return {
-        '_index': index,
+        '_index': es_index,
         '_type': doc_type,
         '_id': doc_id,
         '_source': doc
@@ -77,7 +77,7 @@ def index(args, es):
             doc = build_es_document(line, args.dict_encoding)
             es_action = build_es_action(args.index, args.type, indexed_counter, doc)
             es_actions.append(es_action)
-            indexed_counter = indexed_counter + 1
+            indexed_counter += 1
             if len(es_actions) >= 500:
                 print "Indexing batch..."
                 helpers.bulk(es, es_actions)

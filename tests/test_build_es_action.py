@@ -1,17 +1,16 @@
-import pytest
 from indexer import indexer
 
 
 def test_simple_action():
     doc = {
-            'word' : 'Haus',
-            'letters' : ['h', 'a', 'u', 's'],
-            'length' : 4,
-            'dict' : {
-                'h' : 1,
-                'a' : 1,
-                'u' : 1,
-                's' : 1
+            'word': 'Haus',
+            'letters': ['h', 'a', 'u', 's'],
+            'length': 4,
+            'dict': {
+                'h': 1,
+                'a': 1,
+                'u': 1,
+                's': 1
             }
     }
 
