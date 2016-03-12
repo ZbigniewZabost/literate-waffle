@@ -12,7 +12,7 @@ install:
   
 # command to run tests
 script:
-  - py.test --cov=indexer tests/
+  - py.test --cov=indexer tests/ && pylint indexer
 
 after_success:
   - coveralls
