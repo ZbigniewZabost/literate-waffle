@@ -3,7 +3,7 @@ from indexer import indexer
 
 def test_all_defaults():
     parser = indexer.create_parser()
-    args = parser.parse_args()
+    args = parser.parse_args('')
     assert args.es_host == 'localhost'
     assert args.es_port == 9200
     assert args.index == 'german'
