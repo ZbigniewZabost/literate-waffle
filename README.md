@@ -1,4 +1,8 @@
-# literate-waffle: elasticsearch word indexer  [![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle)
+# literate-waffle: elasticsearch word indexer  
+
+[![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle) 
+[![Coverage Status](https://coveralls.io/repos/github/zbigniewz/literate-waffle/badge.svg?branch=master)](https://coveralls.io/github/zbigniewz/literate-waffle?branch=master)
+
 
 **Usage**
 
