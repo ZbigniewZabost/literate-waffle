@@ -68,8 +68,8 @@ def print_progress(indexed_so_far, all_docs):
     print 'Indexed documents: %d from %d, progress: %.f%%' % (indexed_so_far, all_docs, percent)
 
 
-def index(args, es_conn):
-    with open(args.dictionary) as dict_file:
+def index(es_index, doc_type, words_file, file_encoding, es_conn):
+    with open(words_file) as dict_file:
         print 'Counting number of lines in %s ...' % dict_file.name
         num_lines = sum(1 for line in dict_file)
         dict_file.seek(0)
@@ -77,8 +77,8 @@ def index(args, es_conn):
         es_actions = []
 
         for line in dict_file:
-            doc = build_es_document(line, args.dict_encoding)
-            es_action = build_es_action(args.index, args.type, indexed_counter, doc)
+            doc = build_es_document(line, file_encoding)
+            es_action = build_es_action(es_index, doc_type, indexed_counter, doc)
             es_actions.append(es_action)
             indexed_counter += 1
             if len(es_actions) >= 500:
@@ -97,7 +97,7 @@ def main():
     parser = create_parser()
     args = parser.parse_args()
     es_conn = setup_es(args.es_host, args.es_port, args.index, args.delete_index)
-    index(args, es_conn)
+    index(args.index, args.type, args.dictionary, args.dict_encoding, es_conn)
 
 
 if __name__ == '__main__':
