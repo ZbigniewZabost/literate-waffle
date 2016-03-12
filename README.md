@@ -1,7 +1,8 @@
 # literate-waffle: elasticsearch word indexer  
 
 [![Build Status](https://travis-ci.org/zbigniewz/literate-waffle.svg?branch=master)](https://travis-ci.org/zbigniewz/literate-waffle) 
-[![Coverage Status](https://coveralls.io/repos/github/zbigniewz/literate-waffle/badge.svg?branch=master)](https://coveralls.io/github/zbigniewz/literate-waffle?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/zbigniewz/literate-waffle/badge.svg?branch=master)](https://coveralls.io/github/zbigniewz/literate-waffle?branch=master) 
+[![Code Climate](https://codeclimate.com/github/zbigniewz/literate-waffle/badges/gpa.svg)](https://codeclimate.com/github/zbigniewz/literate-waffle)
 
 
 **Usage**
