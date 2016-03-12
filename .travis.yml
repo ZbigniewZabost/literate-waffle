@@ -13,7 +13,7 @@ install:
   
 # command to run tests
 script:
-  - py.test --cov=indexer tests/ && pylint indexer
+  - py.test --cov=indexer tests/ && pylint --disable=missing-docstring indexer
 
 after_success:
   - coveralls
